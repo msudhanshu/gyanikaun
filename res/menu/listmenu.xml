@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/insert" android:title="Insert"></item>
+<item android:id="@+id/delete" android:icon="@drawable/icon" android:title="Delete"></item>
+<item android:id="@+id/setting" android:icon="@drawable/icon" android:title="Setting"></item>
+<item android:id="@+id/Quit" android:icon="@drawable/icon" android:title="Esc"></item>
+</menu>

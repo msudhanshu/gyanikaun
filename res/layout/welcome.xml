@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:background="@drawable/vishalnight2"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+    <LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="wrap_content" android:gravity="center">
+        <Button android:text="Play" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttonplay" ></Button>
+        <Button android:text="Setting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttonsetting"></Button>
+       <Button android:text="How to Play" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttonhelp"></Button>
+        <Button android:text="Information" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttoninfo"></Button>
+ <Button android:text="Quit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttonquit"></Button>
+ 
+        </LinearLayout>
+    	
+    	
+</RelativeLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.example.android.apis"
+      android:versionCode="1"
+      android:versionName="1.0">
+
+<uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+ 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />  
+	<uses-permission android:name="android.permission.READ_LOGS" />
+    <application android:icon="@drawable/icon"
+         android:label="@string/app_name"
+          android:screenOrientation="landscape"
+      android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+      
+        <activity android:name=".ApiDemos"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity android:name=".BaseActivity"
+			android:windowSoftInputMode="stateVisible|adjustResize">
+			>
+    </activity>
+    		<activity android:name=".WelcomeActivity"
+    		     android:screenOrientation="landscape"
+			android:windowSoftInputMode="stateVisible|adjustResize">
+			>
+    </activity>
+        		<activity android:name="com.example.android.gameplay.PlayActivity"
+        		     android:screenOrientation="landscape"
+			android:windowSoftInputMode="stateVisible|adjustResize">
+			>
+    </activity>
+
+        		<activity android:name="com.example.android.setting.SettingActivity"
+        		     android:screenOrientation="landscape"
+			android:windowSoftInputMode="stateVisible|adjustResize">
+			>
+    </activity>
+    
+                		<activity android:name="com.example.android.gameplay.PrizeActivity"
+        		     android:screenOrientation="landscape"
+			android:windowSoftInputMode="stateVisible|adjustResize">
+			>
+    </activity>
+        		
+              <activity android:name="com.example.android.gameplay.CorrectAnswerActivity"
+        		     android:screenOrientation="landscape"
+			android:windowSoftInputMode="stateVisible|adjustResize">
+			>
+    </activity>
+        		
+                        		<!-- Start of Crittercism.com Code -->
+		<activity android:name="com.crittercism.NewFeedbackSpringboardActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackIssueListActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackQuestionListActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackItemDetailsActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NewFeedbackCreateActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+		<activity android:name="com.crittercism.NotificationActivity"/>
+		<!-- End of Crittercism.com Code -->
+				                		
+    </application>
+    
+    <uses-sdk android:minSdkVersion="8" /> 
+</manifest>
