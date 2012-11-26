@@ -293,7 +293,7 @@ private void fbShare(){
 	
 	//Check whether its current login is wid fb
 
-		FacebookLogin.getInstance().postOnWall(fbParams);
+	//FacebookLogin.getInstance().postOnWall(fbParams);
 	
 		
 	//Intent intent = new Intent(Constants.INTENT_ACTION_LOCATION_LIST_VIEW);

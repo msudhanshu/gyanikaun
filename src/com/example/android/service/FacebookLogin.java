@@ -12,8 +12,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.android.apis.Config;
+import com.example.android.apis.R;
+import com.example.android.gameplay.PlayActivity;
+import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
 import com.facebook.android.Facebook.DialogListener;
@@ -22,17 +28,59 @@ import com.facebook.android.SessionEvents;
 import com.facebook.android.SessionEvents.AuthListener;
 import com.facebook.android.SessionEvents.LogoutListener;
 
-public class FacebookLogin extends Activity{
+public class FacebookLogin extends Activity implements View.OnClickListener{
+	private Button mButtonFbpost;
 	private static final String TOKEN = "access_token";
 	private static final String EXPIRES = "expires_in";
 	private static final String KEY = "facebook-session";
-    public static final String PUNCHH_APP_ID = "10150105628410635"; //111921275604906
 	private Context currentContext = null;
 	private IFacebookLogin iFBLogin;
 	private static Facebook facebook = null;
 	private static FacebookLogin mInstance= null;
 	private Handler mFBShareHandler = new Handler();
 	private Bundle mFBMsgParams = null;
+	
+	
+	  @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.main);
+	       
+	        mButtonFbpost = (Button)findViewById(R.id.fbpost);
+	        mButtonFbpost.setOnClickListener(this);
+	        
+	        facebook.authorize(this, new DialogListener() {
+	            @Override
+	            public void onComplete(Bundle values) {}
+
+	            @Override
+	            public void onFacebookError(FacebookError error) {}
+
+	            @Override
+	            public void onError(DialogError e) {}
+
+	            @Override
+	            public void onCancel() {}
+	        });
+	    }
+
+
+
+		public void onActivityResult(int requestCode, int resultCode, Intent data) {
+			super.onActivityResult(requestCode, resultCode, data);
+			facebook.authorizeCallback(requestCode, resultCode, data);
+		}
+		
+		
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			  if (mButtonFbpost.equals(v)) {
+				  fbShare();
+		         }
+			 
+		}
+		
+		
 	/**
 	 * @Properties:
 	 * Email,UserName,AccessToken,EmailId
@@ -101,10 +149,12 @@ public class FacebookLogin extends Activity{
 	 */
 	public FacebookLogin(){
 		//clearSession();
-		facebook = new Facebook(PUNCHH_APP_ID);
+		facebook = new Facebook(Config.GYANIKAUN_FB_APP_ID);
+		 AsyncFacebookRunner mAsyncRunner = new AsyncFacebookRunner(facebook);
 		//Will get session variables if present in shared prefrences
 		SessionEvents.addAuthListener(new FbAPIsAuthListener());
 		SessionEvents.addLogoutListener(new FbAPIsLogoutListener());
+		//login(this);
 	}
 	public static FacebookLogin getInstance()
 	{
@@ -148,7 +198,32 @@ public class FacebookLogin extends Activity{
 						//saveSession(facebook);//Not using now.
 						requestUserData();
 						iFBLogin.OnAuthrizationSuccess();
+					}
 
+					public void onFacebookError(FacebookError error) {}
+
+					public void onError(DialogError e) {}
+
+					public void onCancel() {}
+				});
+			}
+		}
+	}
+	
+	public void login(Activity currentActivity) {
+
+		if(facebook.isSessionValid()){
+		}
+		else
+		{
+		//	currentContext = currentActivity.getApplicationContext();
+			if(!facebook.isSessionValid()){
+				// mPrefs = getPreferences(MODE_PRIVATE);
+				facebook.authorize(this,new DialogListener() {
+					public void onComplete(Bundle values) {
+						//saveSession(facebook);//Not using now.
+						requestUserData();
+						iFBLogin.OnAuthrizationSuccess();
 					}
 
 					public void onFacebookError(FacebookError error) {}
@@ -238,11 +313,6 @@ public class FacebookLogin extends Activity{
 		}
 	}
 
-
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		facebook.authorizeCallback(requestCode, resultCode, data);
-	}
 	/*
 	 * The Callback for notifying the application when authorization
 	 *  succeeds or fails.
@@ -272,4 +342,33 @@ public class FacebookLogin extends Activity{
 
 		}
 	}
+	
+	private void fbShare(){
+		Bundle fbParams = new Bundle();
+		//prepareMsg(fbParams);
+		
+			fbParams.putString("name","kkkk");
+			fbParams.putString("link", "http://google.com");
+			//If caption will not be there or caption will be "" FB will take default caption.So blank string
+		//	fbParams.putString("caption", " ");
+		//	fbParams.putString("description"," ");
+			//String cuisineType = mAppState.getCuisineType();
+		//	String picUrl = "http://www.punchh.com/images/cuisine_types/";
+			
+			//	picUrl +="DefaultBusinessLogo.png";
+			
+		//	fbParams.putString("picture",picUrl);
+		//	fbParams.putString("message", "mShareThoughts");
+			
+		
+			postOnWall(fbParams);
+		//Check whether its current login is wid fb
+
+		//FacebookLogin.getInstance().postOnWall(fbParams);
+		
+			
+		//Intent intent = new Intent(Constants.INTENT_ACTION_LOCATION_LIST_VIEW);
+		//startActivity(intent);
+	}
+	
 }

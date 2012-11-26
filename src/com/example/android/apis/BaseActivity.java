@@ -20,7 +20,7 @@ public class BaseActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		Crittercism.init(getApplicationContext(), Config.CRITTERCISM_KEY);
+	//	Crittercism.init(getApplicationContext(), Config.CRITTERCISM_KEY);
 		
         setContentView(R.layout.main);
     }

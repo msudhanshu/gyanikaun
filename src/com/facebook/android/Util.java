@@ -46,7 +46,7 @@ import android.webkit.CookieSyncManager;
  *
  */
 public final class Util {
-
+	private static boolean ENABLE_LOG = true;
     /**
      * Generate the multi-part post body providing the parameters and boundary
      * string

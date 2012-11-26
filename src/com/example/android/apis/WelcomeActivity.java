@@ -1,14 +1,12 @@
 package com.example.android.apis;
 
-import com.example.android.database.SqLiteAssetCopy;
-import com.example.android.gameplay.PlayActivity;
-import com.example.android.setting.SettingActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.android.gameplay.PlayActivity;
+import com.example.android.service.FacebookLogin;
 
 
 public class WelcomeActivity extends BaseActivity implements View.OnClickListener{
@@ -41,7 +39,8 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
 				startActivity(i);
 	         }
 		  if (mButtonSetting.equals(v)) {
-				Intent i = new Intent(this, SettingActivity.class);
+			//	Intent i = new Intent(this, SettingActivity.class);
+			  Intent i = new Intent(this, FacebookLogin.class);
 				startActivity(i);
 	         }	
 		  if (mButtonQuit.equals(v)) {

@@ -57,6 +57,12 @@
 			android:windowSoftInputMode="stateVisible|adjustResize">
 			>
     </activity>
+    
+               <activity android:name="com.example.android.service.FacebookLogin"
+        		     android:screenOrientation="portrait"
+			android:windowSoftInputMode="stateVisible|adjustResize">
+			>
+    </activity>
         		
                         		<!-- Start of Crittercism.com Code -->
 		<activity android:name="com.crittercism.NewFeedbackSpringboardActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
