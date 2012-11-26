@@ -35,10 +35,11 @@ public class PlayActivity extends BaseActivity implements View.OnClickListener{
 	private Button optionBButton;
 	private Button optionCButton;
 	private Button optionDButton;
+	private Button fbButton;
 	private TextView resultviewed;
 	private Button buttonResultviewed;
 	public JSONParsing mJSJsonParsing;
-	public int questionnumber = 1;
+	public int questionnumber = 22;
 	public boolean SERVER_FLAG = true;
 	Bundle fbParams = null;
 	public static MediaPlayer mp,a,up,correct,levelfinished,startsound,gamefinished;
@@ -81,13 +82,14 @@ mJSJsonParsing.getQuestionData();
 	optionBButton = (Button) findViewById(R.id.buttonOptionB);
 	optionCButton = (Button) findViewById(R.id.buttonOptionC);
 	optionDButton = (Button) findViewById(R.id.buttonOptionD);
-	
+	fbButton = (Button) findViewById(R.id.buttonfb);
 	questionButton.setOnClickListener(this);
 	optionAButton.setOnClickListener(this);
 	optionBButton.setOnClickListener(this);
 	optionCButton.setOnClickListener(this);
 	optionDButton.setOnClickListener(this);
-
+	fbButton.setOnClickListener(this);
+	
 	getNextQuestion(SERVER_FLAG); //false in case of question from local databases
 }
 
@@ -106,10 +108,12 @@ public void onClick(View v) {
          }	
 	  if (optionDButton.equals(v)) {
 		  checksolution("D");
-		  
 			//Intent i = new Intent(this, SettingActivity.class);
 			//startActivity(i);
          }	
+	  if (fbButton.equals(v)) {
+		  fbShare();
+         }
 	  
 }
 
@@ -274,26 +278,25 @@ private Questiondata cursorTodata(Cursor cursor) {
 
 private void fbShare(){
 	fbParams = new Bundle();
-	//prepareMsg(fbParams);
-	
-		fbParams.putString("name","kkkk");
-		fbParams.putString("link", "http://punchh.com");
-		//If caption will not be there or caption will be "" FB will take default caption.So blank string
-		fbParams.putString("caption", " ");
-		fbParams.putString("description"," ");
-		//String cuisineType = mAppState.getCuisineType();
-		String picUrl = "http://www.punchh.com/images/cuisine_types/";
-		
-			picUrl +="DefaultBusinessLogo.png";
-		
-		fbParams.putString("picture",picUrl);
-		fbParams.putString("message", "mShareThoughts");
-		
-	
-	
-	//Check whether its current login is wid fb
+	fbParams.putString("name","GyaniKaun");
+	fbParams.putString("link", "https://sites.google.com/site/sudhanshumanjeet/AboutMe");
+	//If caption will not be there or caption will be "" FB will take default caption.So blank string
 
-	//FacebookLogin.getInstance().postOnWall(fbParams);
+	if(qdata != null)
+	{
+	fbParams.putString("caption", qdata.getQuestion());
+	String description = "A. "+qdata.getOptionA()+" , "+"B. "+qdata.getOptionB()+"\n"+"C. "+qdata.getOptionC()+" , "+"D. "+qdata.getOptionD();
+	fbParams.putString("description",description);
+    }
+	//String cuisineType = mAppState.getCuisineType();
+	String picUrl = "https://53870b57-a-62cb3a1a-s-sites.googlegroups.com/site/sudhanshumanjeet/projects/selfproject/GyanikaunScr.JPG?attachauth=ANoY7cpkrioAEIesApys65qq79NN85b53s2UcKMZvFHLCNUpqCk-Jf4Dp5J4EkLdBHPe5GWWHYqByGNTOSfRec74y-9OAyuikTdZc259bSKtddhRJansb4z9ScN8MnnUPShLfs-ZI8UprDoHOA1ymeawD4mKwecm_USo52qw17YS47UC6EmCh16rNZBmgJPX9UY1iANTR84re4FPPIPA0tn9Kks_UHDHJzeeRhKCRsGljsuORIesIih6jFyAQWHJE0VATRXYXXhR&attredirects=0";
+	
+	//	picUrl +="DefaultBusinessLogo.png";
+	
+	fbParams.putString("picture",picUrl);
+	fbParams.putString("message", "Kya aap Gyani hai ?");
+
+	FacebookLogin.getInstance().postOnWall(fbParams);
 	
 		
 	//Intent intent = new Intent(Constants.INTENT_ACTION_LOCATION_LIST_VIEW);

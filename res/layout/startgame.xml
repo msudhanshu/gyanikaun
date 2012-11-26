@@ -5,6 +5,15 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent" >
 
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="top|right">
+    <LinearLayout android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="wrap_content" android:gravity="right">  
+    <Button android:text="f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttonfb1" android:gravity="right"></Button>
+    </LinearLayout>
+</RelativeLayout>
 	
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +24,8 @@
     
     <LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="fill_parent" android:gravity="center">  
      <Button android:text=".....?" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/buttonQuestion" android:gravity="left"></Button>
-      
+      <Button android:text="f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttonfb" android:gravity="right"></Button>
+     
        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
